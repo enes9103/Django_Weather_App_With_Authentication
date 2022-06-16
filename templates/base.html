@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="javascript-react,javascript,django">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'weatherapp/style.css' %}"> 
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/> 
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/> 
+<!-- MDB -->
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet"/> 
+<style>
+  body {
+    background-color: #010221;
+  }
+</style>
+    <title>CodeFraternity-WeatherApp</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div style="margin-top: 100px; margin-bottom: 100px;" class="container">
+      {% if messages %}
+      {% for message in messages %}
+      {% if message.tags == "error" %}
+      <div class="alert alert-danger">{{ message }}</div>
+      {% else %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      <div class="row">
+          {% block content %}
+      {% endblock content %}
+      </div>
+  </div>
+
+    <script src="{% static 'weatherapp/app.js' %}"></script>
+</body>
+</html>

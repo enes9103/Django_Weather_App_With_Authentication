@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="vh-75">
+    <div class="container py-5 h-100">
+      <h4 style="color:white;text-align:center;color:#348888">Please log in for the weather forecast of new cities! </h4>  
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+          <div class="card" style="color: #B7BF99; border-radius: 35px;background-color:rgb(180 83 9)">
+            <div class="card-body p-4">
+  
+              <div class="d-flex">
+                <h6 class="flex-grow-1">{{city}}</h6>
+                <h6>{{country}}</h6>
+              </div>
+  
+              <div class="d-flex flex-column text-center mt-5 mb-4">
+                <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{temp}}°C </h6>
+                <span class="small" style="color: #868B94">{{desc}}</span>
+              </div>
+  
+              <div class="d-flex align-items-center">
+                <div class="flex-grow-1" style="font-size: 1rem;">
+                    <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{wind}} km/h
+                      </span></div>
+                    <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{humi}} </span>%
+                    </div>
+                    
+                  </div>
+                <div>
+                    <img class="city-icon" src="http://openweathermap.org/img/wn/{{ icon }}.png">
+                </div>
+              </div>
+  
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  </section>
+{% endblock content %}

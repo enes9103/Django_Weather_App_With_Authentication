@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <section class="top-banner">
+    <div class="container">
+        <h1 class="heading">Weather App with Django</h1>
+       
+      <form action="" method="get">
+        <input type="text" placeholder="Search for a city" name="city" id="city" autofocus>
+        <button type="submit">SEARCH</button>
+      </form>
+      
+  </section>   
+  <div class="row row-cols-1 row-cols-md-3 g-3 mt-2">
+            {% for i in city_list %}
+          <div class="card" style="border-radius: 35px;width:24%;margin-right:5px;background-color:rgb(180 83 9)">
+            <div class="card-body">
+  
+              <div class="d-flex" style="color:#B7BF99">
+                <h6 class="flex-grow-1">{{i.city}}</h6>
+                <h6><a href="{% url 'delete_city' i.id %}" class="del-city"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg></a></h6>
+              </div>
+  
+              <div class="d-flex flex-column text-center mt-5 mb-4">
+                <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{i.temp}}°C </h6>
+                <span class="small" style="color: #868B94">{{i.desc}}</span>
+              </div>
+  
+              <div class="d-flex align-items-center">
+                <div class="flex-grow-1" style="font-size: 1rem;">
+                  <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{i.wind}} km/h
+                  </span></div>
+                <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{i.humi}} </span>%
+                </div>
+                </div>
+                <div>
+                    <img class="city-icon" src="http://openweathermap.org/img/wn/{{ i.icon }}.png">
+                </div>
+              </div>
+  
+            </div>
+          </div>
+          {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% load static  %}
+{% block content %} {% load crispy_forms_tags %}
+
+<div style="width: 100%;align-items:center;justify-content:center;margin:1rem; border:1px solid grey">
+    <h2 class="m-3" style="display:block;">Register</h2>
+    <hr>
+
+{% if request.user.is_authenticated %}
+
+<h3 style="display:block;">Thanks for registering</h3>
+
+{% else %}
+
+<div class="w-100 m-2">
+    <form action="" method="post" enctype="multipart/form-data" style="color:#348888">
+        {% csrf_token %} {{ form | crispy }}
+        
+        <button type="submit" class="btn btn-danger">Register</button>
+    </form>
+</div>
+</div>
+{% endif %} {% endblock content %}
